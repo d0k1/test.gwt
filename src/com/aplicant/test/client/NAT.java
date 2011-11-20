@@ -1,5 +1,9 @@
 package com.aplicant.test.client;
 
+import net.customware.gwt.dispatch.client.DefaultExceptionHandler;
+import net.customware.gwt.dispatch.client.DispatchAsync;
+import net.customware.gwt.dispatch.client.standard.StandardDispatchAsync;
+
 import com.aplicant.test.client.activity.ApplicationActivityMapper;
 import com.aplicant.test.client.factory.ClientFactory;
 import com.aplicant.test.client.place.ApplicationHistoryMapper;

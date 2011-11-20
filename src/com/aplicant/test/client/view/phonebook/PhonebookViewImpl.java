@@ -45,4 +45,9 @@ public class PhonebookViewImpl extends Composite implements PhonebookView {
 	public void setPresenter(Object presenter) {
 		this.presenter = (PhonebookPresenter) presenter;
 	}
+	
+	@Override
+	public ListBox getContactListBox(){
+		return contactList;
+	}
 }

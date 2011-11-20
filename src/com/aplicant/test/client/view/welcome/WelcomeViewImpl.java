@@ -49,7 +49,7 @@ public class WelcomeViewImpl extends Composite implements WelcomeView {
 
 	@UiHandler("button")
 	void onClick(ClickEvent e) {
-		Window.alert("goto phonebook");
+		//Window.alert("goto phonebook");
 		
 		presenter.gotoPhonebook();
 	}

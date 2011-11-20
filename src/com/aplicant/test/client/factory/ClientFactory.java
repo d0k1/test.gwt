@@ -1,5 +1,7 @@
 package com.aplicant.test.client.factory;
 
+import net.customware.gwt.dispatch.client.DispatchAsync;
+
 import com.aplicant.test.client.view.phonebook.PhonebookView;
 import com.aplicant.test.client.view.welcome.WelcomeView;
 import com.google.gwt.place.shared.PlaceController;
@@ -14,4 +16,6 @@ public interface ClientFactory {
 	WelcomeView getWelcomeView();
 	
 	PhonebookView getPhonebookView();
+	
+	DispatchAsync getDispatch();
 }
