@@ -12,9 +12,7 @@
 				<g:Button ui:field="addButton">Добавить</g:Button>
 				<g:Button ui:field="viewButtom">Просмотр</g:Button>
 				<g:Button ui:field="deleteButtom">Удалить</g:Button>
-				<g:Cell verticalAlignment="ALIGN_MIDDLE" horizontalAlignment="ALIGN_CENTER">
-					<g:Label text="Фильтр" horizontalAlignment="ALIGN_CENTER" height="28px"/>
-				</g:Cell>
+				<g:Label text="Фильтр"/>
 				<g:TextBox ui:field="filterInput"/>
 				<g:Button ui:field="clearButton">Очистить</g:Button>
 			</g:HorizontalPanel>

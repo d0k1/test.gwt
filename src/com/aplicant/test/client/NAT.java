@@ -3,7 +3,7 @@ package com.aplicant.test.client;
 import com.aplicant.test.client.activity.ApplicationActivityMapper;
 import com.aplicant.test.client.factory.ClientFactory;
 import com.aplicant.test.client.place.ApplicationHistoryMapper;
-import com.aplicant.test.client.place.welcome.WelcomePlace;
+import com.aplicant.test.client.place.welcome.Welcome;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;
@@ -19,7 +19,7 @@ import com.google.web.bindery.event.shared.EventBus;
  */
 public class NAT implements EntryPoint {
 	private SimplePanel appWidget = new SimplePanel();
-	private WelcomePlace defaultPlace = new WelcomePlace("Greetings");
+	private Welcome defaultPlace = new Welcome("Greetings");
 	
 	public void onModuleLoad() {
         ClientFactory clientFactory = GWT.create(ClientFactory.class);

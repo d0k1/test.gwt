@@ -3,7 +3,7 @@ package com.aplicant.test.client.place.card;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
-public class CardPlace extends Place {
+public class Card extends Place {
 
 	private String contactId = "";
 	
@@ -15,20 +15,20 @@ public class CardPlace extends Place {
 		return contactId;
 	}
 	
-	public CardPlace(String contactId) {
+	public Card(String contactId) {
 		super();
 		this.contactId = contactId;
 	}
 
-	public static class Tokenizer implements PlaceTokenizer<CardPlace> {
+	public static class Tokenizer implements PlaceTokenizer<Card> {
         @Override
-        public String getToken(CardPlace place) {
+        public String getToken(Card place) {
             return place.getContactId();
         }
 
         @Override
-        public CardPlace getPlace(String token) {
-            return new CardPlace(token);
+        public Card getPlace(String token) {
+            return new Card(token);
         }
     }
 

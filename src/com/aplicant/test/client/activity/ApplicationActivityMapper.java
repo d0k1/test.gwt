@@ -3,8 +3,8 @@ package com.aplicant.test.client.activity;
 import com.aplicant.test.client.activity.phonebook.PhonebookActivity;
 import com.aplicant.test.client.activity.welcome.WelcomeActivity;
 import com.aplicant.test.client.factory.ClientFactory;
-import com.aplicant.test.client.place.phonebook.PhonebookPlace;
-import com.aplicant.test.client.place.welcome.WelcomePlace;
+import com.aplicant.test.client.place.phonebook.Phonebook;
+import com.aplicant.test.client.place.welcome.Welcome;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
@@ -19,10 +19,10 @@ public class ApplicationActivityMapper implements ActivityMapper {
 
     @Override
     public Activity getActivity(Place place) {
-        if (place instanceof WelcomePlace)
-            return new WelcomeActivity((WelcomePlace) place, clientFactory);
-        else if (place instanceof PhonebookPlace)
-        	return new PhonebookActivity((PhonebookPlace) place, clientFactory);
+        if (place instanceof Welcome)
+            return new WelcomeActivity((Welcome) place, clientFactory);
+        else if (place instanceof Phonebook)
+        	return new PhonebookActivity((Phonebook) place, clientFactory);
         return null;
     }
 }
