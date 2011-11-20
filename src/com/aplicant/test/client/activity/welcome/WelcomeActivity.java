@@ -29,7 +29,7 @@ public class WelcomeActivity extends AbstractActivity implements WelcomePresente
 
 	@Override
 	public void gotoPhonebook() {
-		clientFactory.getPlaceController().goTo(new Phonebook());		
+		clientFactory.getPlaceController().goTo(new Phonebook(""));		
 	}
 
 }

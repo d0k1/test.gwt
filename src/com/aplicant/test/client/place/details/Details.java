@@ -1,9 +1,9 @@
-package com.aplicant.test.client.place.card;
+package com.aplicant.test.client.place.details;
 
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
-public class Card extends Place {
+public class Details extends Place {
 
 	private String contactId = "";
 	
@@ -15,20 +15,20 @@ public class Card extends Place {
 		return contactId;
 	}
 	
-	public Card(String contactId) {
+	public Details(String contactId) {
 		super();
 		this.contactId = contactId;
 	}
 
-	public static class Tokenizer implements PlaceTokenizer<Card> {
+	public static class Tokenizer implements PlaceTokenizer<Details> {
         @Override
-        public String getToken(Card place) {
+        public String getToken(Details place) {
             return place.getContactId();
         }
 
         @Override
-        public Card getPlace(String token) {
-            return new Card(token);
+        public Details getPlace(String token) {
+            return new Details(token);
         }
     }
 
