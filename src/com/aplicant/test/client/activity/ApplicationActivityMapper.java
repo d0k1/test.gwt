@@ -1,7 +1,7 @@
 package com.aplicant.test.client.activity;
 
-import com.aplicant.test.client.activity.create.CreateActivity;
-import com.aplicant.test.client.activity.details.DetailsActivity;
+import com.aplicant.test.client.activity.card.create.CreateActivity;
+import com.aplicant.test.client.activity.card.details.DetailsActivity;
 import com.aplicant.test.client.activity.phonebook.PhonebookActivity;
 import com.aplicant.test.client.activity.welcome.WelcomeActivity;
 import com.aplicant.test.client.factory.ClientFactory;

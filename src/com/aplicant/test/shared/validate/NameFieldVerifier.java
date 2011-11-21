@@ -1,4 +1,4 @@
-package com.aplicant.test.shared;
+package com.aplicant.test.shared.validate;
 
 
 public class NameFieldVerifier {

@@ -1,15 +1,15 @@
-package com.aplicant.test.client.activity;
+package com.aplicant.test.client.activity.card;
 
 import net.customware.gwt.dispatch.client.DispatchAsync;
 
 import com.aplicant.test.client.factory.ClientFactory;
 import com.aplicant.test.client.place.phonebook.Phonebook;
 import com.aplicant.test.client.presenter.card.CardPresenter;
-import com.aplicant.test.shared.NameFieldVerifier;
-import com.aplicant.test.shared.PhoneFieldVerifier;
+import com.aplicant.test.shared.validate.NameFieldVerifier;
+import com.aplicant.test.shared.validate.PhoneFieldVerifier;
 import com.google.gwt.activity.shared.AbstractActivity;
 
-public abstract class CardActivity extends AbstractActivity implements CardPresenter {
+public abstract class CommonCardActivity extends AbstractActivity implements CardPresenter {
 	private ClientFactory clientFactory;
 	private DispatchAsync dispatch;
 

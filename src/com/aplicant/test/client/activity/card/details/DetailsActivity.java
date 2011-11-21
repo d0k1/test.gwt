@@ -1,6 +1,6 @@
-package com.aplicant.test.client.activity.details;
+package com.aplicant.test.client.activity.card.details;
 
-import com.aplicant.test.client.activity.CardActivity;
+import com.aplicant.test.client.activity.card.CommonCardActivity;
 import com.aplicant.test.client.factory.ClientFactory;
 import com.aplicant.test.client.place.details.Details;
 import com.aplicant.test.client.presenter.card.CardPresenter;
@@ -17,7 +17,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-public class DetailsActivity extends CardActivity implements CardPresenter {
+public class DetailsActivity extends CommonCardActivity implements CardPresenter {
 	private Details place;
 	private Contact currentContact = null;
 	private final CardView view;
