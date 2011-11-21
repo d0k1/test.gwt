@@ -6,8 +6,8 @@ import com.aplicant.test.client.factory.ClientFactory;
 import com.aplicant.test.client.place.phonebook.Phonebook;
 import com.aplicant.test.client.presenter.phonebook.PhonebookPresenter;
 import com.aplicant.test.client.view.phonebook.PhonebookView;
-import com.aplicant.test.shared.action.GetContactsAction;
-import com.aplicant.test.shared.action.GetContactsResult;
+import com.aplicant.test.shared.action.get.GetContactsAction;
+import com.aplicant.test.shared.action.get.GetContactsResult;
 import com.aplicant.test.shared.model.Contact;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
@@ -33,7 +33,7 @@ public class PhonebookActivity extends AbstractActivity implements PhonebookPres
 		view.setPresenter(this);
 		panel.setWidget(view.asWidget());
 		
-		dispatch.execute(new GetContactsAction(), new AsyncCallback<GetContactsResult>() {
+		dispatch.execute(new GetContactsAction(""), new AsyncCallback<GetContactsResult>() {
 
             public void onFailure(Throwable caught) {
             	Window.alert("Error getting contacts");

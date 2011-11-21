@@ -9,7 +9,7 @@ import net.customware.gwt.dispatch.shared.Action;
 import net.customware.gwt.dispatch.shared.DispatchException;
 import net.customware.gwt.dispatch.shared.Result;
 
-import com.aplicant.test.server.handlers.GetContactsHandler;
+import com.aplicant.test.server.handlers.get.GetContactsHandler;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class DispatchServlet extends RemoteServiceServlet implements

@@ -1,4 +1,4 @@
-package com.aplicant.test.shared.action;
+package com.aplicant.test.shared.action.get;
 
 import java.io.Serializable;
 import java.util.ArrayList;
