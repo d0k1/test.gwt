@@ -11,6 +11,10 @@ public class UpdateContactAction implements Action<UpdateContactResult> {
 	public UpdateContactAction(){
 	}
 
+	public UpdateContactAction(Contact contact){
+		this.contact = contact;
+	}
+
 	public Contact getContact() {
 		return contact;
 	}

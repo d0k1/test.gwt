@@ -1,50 +1,51 @@
 package com.aplicant.test.client.activity.details;
 
-import net.customware.gwt.dispatch.client.DispatchAsync;
-
+import com.aplicant.test.client.activity.CardActivity;
 import com.aplicant.test.client.factory.ClientFactory;
 import com.aplicant.test.client.place.details.Details;
-import com.aplicant.test.client.place.phonebook.Phonebook;
 import com.aplicant.test.client.presenter.card.CardPresenter;
 import com.aplicant.test.client.view.card.CardView;
-import com.aplicant.test.shared.NameFieldVerifier;
-import com.aplicant.test.shared.PhoneFieldVerifier;
+import com.aplicant.test.shared.action.delete.DeleteContactAction;
+import com.aplicant.test.shared.action.delete.DeleteContactResult;
 import com.aplicant.test.shared.action.get.GetContactByIdAction;
 import com.aplicant.test.shared.action.get.GetContactByIdResult;
-import com.google.gwt.activity.shared.AbstractActivity;
+import com.aplicant.test.shared.action.update.UpdateContactAction;
+import com.aplicant.test.shared.action.update.UpdateContactResult;
+import com.aplicant.test.shared.model.Contact;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-public class DetailsActivity extends AbstractActivity implements CardPresenter {
-	private ClientFactory clientFactory;
+public class DetailsActivity extends CardActivity implements CardPresenter {
 	private Details place;
-	private DispatchAsync dispatch;
+	private Contact currentContact = null;
+	private final CardView view;
 	
-	public DetailsActivity(ClientFactory clientFactory, Details place) {
+	public DetailsActivity(Details place, ClientFactory clientFactory) {
 		super();
-		this.clientFactory = clientFactory;
+		super.setClientFactory(clientFactory);
 		this.place = place;
-		this.dispatch = clientFactory.getDispatch();
+		view = getClientFactory().getCardView();
 	}
 	
 	@Override
 	public void start(final AcceptsOneWidget panel, EventBus eventBus) {
 		final Object presenter = this;
-		dispatch.execute(new GetContactByIdAction(place.getContactId()), new AsyncCallback<GetContactByIdResult>() {
+		getDispatch().execute(new GetContactByIdAction(place.getContactId()), new AsyncCallback<GetContactByIdResult>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert("Ошибка получени контакта");
+				Window.alert("Ошибка получени контакта: "+caught.getMessage());
+				goBack();
 			}
 
 			@Override
-			public void onSuccess(GetContactByIdResult result) {
-				CardView view = clientFactory.getCardView();
+			public void onSuccess(GetContactByIdResult result) {		
 				view.setDeletable(true);
 				view.setPresenter(presenter);
-				view.setContact(result.getContact());
+				currentContact = result.getContact();
+				view.setContact(currentContact);
 				panel.setWidget(view.asWidget());
 			}
 		});
@@ -52,32 +53,35 @@ public class DetailsActivity extends AbstractActivity implements CardPresenter {
 	
 	@Override
 	public void save() {
-	}
-	@Override
-	public void discard() {
-		goBack();
+		getDispatch().execute(new UpdateContactAction(view.getContact()), new AsyncCallback<UpdateContactResult>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("Ошибка сохранения данных");				
+			}
+
+			@Override
+			public void onSuccess(UpdateContactResult result) {
+				goBack();
+			}
+		});
 	}
 	
-	@Override
-	public void goBack() {
-	}
-
-	@Override
-	public boolean validateName(String value) {
-		
-		return NameFieldVerifier.isValidName(value);
-	}
-	
-	@Override
-	public boolean validatePhone(String value) {
-
-		return PhoneFieldVerifier.isValidPhone(value);
-	}
-
 	@Override
 	public void delete() {
-		// TODO Auto-generated method stub
-		
+		getDispatch().execute(new DeleteContactAction(currentContact.id), new AsyncCallback<DeleteContactResult>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("Ошибка удаления контакта");
+			}
+
+			@Override
+			public void onSuccess(DeleteContactResult result) {
+				goBack();
+			}
+			
+		});
 	}
 
 }

@@ -12,6 +12,10 @@ public class CreateContactAction implements Action<CreateContactResult> {
 	public CreateContactAction(){
 	}
 
+	public CreateContactAction(Contact contact){
+		this.contact = contact;
+	}
+
 	public Contact getContact() {
 		return contact;
 	}

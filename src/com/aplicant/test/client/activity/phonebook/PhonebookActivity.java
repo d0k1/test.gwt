@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import net.customware.gwt.dispatch.client.DispatchAsync;
 
 import com.aplicant.test.client.factory.ClientFactory;
+import com.aplicant.test.client.place.create.Create;
 import com.aplicant.test.client.place.details.Details;
 import com.aplicant.test.client.place.phonebook.Phonebook;
 import com.aplicant.test.client.place.welcome.Welcome;
 import com.aplicant.test.client.presenter.phonebook.PhonebookPresenter;
 import com.aplicant.test.client.view.phonebook.PhonebookView;
+import com.aplicant.test.shared.action.delete.DeleteContactAction;
+import com.aplicant.test.shared.action.delete.DeleteContactResult;
 import com.aplicant.test.shared.action.get.GetContactsAction;
 import com.aplicant.test.shared.action.get.GetContactsResult;
 import com.aplicant.test.shared.model.Contact;
@@ -25,27 +28,35 @@ public class PhonebookActivity extends AbstractActivity implements PhonebookPres
 	private Phonebook place;
 	private DispatchAsync dispatch;
 	private ArrayList<Contact> currentContacts = new ArrayList<Contact>();
+	private final PhonebookView view;
 	
 	public PhonebookActivity(Phonebook place, ClientFactory factory){
 		this.clientFactory = factory;
 		this.place = place;
 		this.dispatch = clientFactory.getDispatch();
-	}	
+		view = clientFactory.getPhonebookView();
+	}
 	
 	@Override
 	public void start(final AcceptsOneWidget panel, EventBus eventBus) {
 		final Object presenter = this;
-		dispatch.execute(new GetContactsAction(""), new AsyncCallback<GetContactsResult>() {
+		dispatch.execute(new GetContactsAction(place.getFilter()), new AsyncCallback<GetContactsResult>() {
 
             public void onFailure(Throwable caught) {
             	Window.alert("Ошибка при получении списка контактов");
             	clientFactory.getPlaceController().goTo(new Welcome());
             }
 
-            public void onSuccess(GetContactsResult result) {
-        		final PhonebookView view = clientFactory.getPhonebookView();
+            public void onSuccess(GetContactsResult result) {        		
         		view.setPresenter(presenter);
         		panel.setWidget(view.asWidget());
+        		
+        		if(place.getFilter().length()>0)
+        			view.setFilterState(true);
+        		else
+        			view.setFilterState(false);
+        		
+        		view.getFilterInput().setText(place.getFilter());
         		
             	ListBox b = view.getContactListBox();
             	b.clear();
@@ -60,8 +71,7 @@ public class PhonebookActivity extends AbstractActivity implements PhonebookPres
 
 	@Override
 	public void createContact() {
-		// TODO Auto-generated method stub
-		
+		clientFactory.getPlaceController().goTo(new Create());
 	}
 
 	@Override
@@ -73,14 +83,30 @@ public class PhonebookActivity extends AbstractActivity implements PhonebookPres
 
 	@Override
 	public void deleteContact(int index) {
-		// TODO Auto-generated method stub
-		
+		dispatch.execute(new DeleteContactAction(currentContacts.get(index).id), new AsyncCallback<DeleteContactResult>() {
+
+            public void onFailure(Throwable caught) {
+            	Window.alert("Ошибка при получении списка контактов");
+            }
+
+            public void onSuccess(DeleteContactResult result) {
+            	if(place.getFilter().length()>0){
+            		filterContacts(place.getFilter());
+            	} else {
+            		unfilterContacts();
+            	}
+            }
+        });
 	}
 
 	@Override
-	public void filterContacts(int index) {
-		// TODO Auto-generated method stub
-		
+	public void filterContacts(String name) {
+		clientFactory.getPlaceController().goTo(new Phonebook(name));
+	}
+
+	@Override
+	public void unfilterContacts() {
+		clientFactory.getPlaceController().goTo(new Phonebook(""));
 	}
 	
 }

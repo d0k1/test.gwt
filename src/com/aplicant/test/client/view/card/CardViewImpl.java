@@ -3,23 +3,21 @@ package com.aplicant.test.client.view.card;
 import com.aplicant.test.client.presenter.card.CardPresenter;
 import com.aplicant.test.shared.model.Contact;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HasText;
-import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.Widget;
 
 public class CardViewImpl extends Composite implements CardView {
 
 	private CardPresenter presenter;
-	
+	private String contactId = null;
 	private static CardViewImplUiBinder uiBinder = GWT
 			.create(CardViewImplUiBinder.class);
 	@UiField TextBox nameField;
@@ -44,6 +42,7 @@ public class CardViewImpl extends Composite implements CardView {
 
 	@Override
 	public void setContact(Contact contact) {
+		contactId = contact.id;
 		nameField.setText(contact.name);
 		phoneField.setText(contact.phone);
 	}
@@ -51,6 +50,7 @@ public class CardViewImpl extends Composite implements CardView {
 	@Override
 	public Contact getContact() {
 		Contact result = new Contact(nameField.getText(), phoneField.getText());
+		result.id = contactId;
 		return result;
 	}
 

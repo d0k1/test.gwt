@@ -4,5 +4,6 @@ public interface PhonebookPresenter {
 	void createContact();
 	void updateContact(int index);
 	void deleteContact(int index);
-	void filterContacts(int index);
+	void filterContacts(String name);
+	void unfilterContacts();
 }

@@ -7,7 +7,7 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 
 public class Contact implements IsSerializable{
 	
-	public String id;
+	public String id = null;
 	public String name;
 	public String phone;
 	

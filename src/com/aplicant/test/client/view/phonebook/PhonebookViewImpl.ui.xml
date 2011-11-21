@@ -7,16 +7,15 @@
 		}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel width="627px">
+		<g:VerticalPanel width="510px">
 			<g:HorizontalPanel>
 				<g:Button ui:field="addButton">Добавить</g:Button>
 				<g:Button ui:field="viewButtom">Просмотр</g:Button>
 				<g:Button ui:field="deleteButtom">Удалить</g:Button>
-				<g:Label text="Фильтр"/>
 				<g:TextBox ui:field="filterInput"/>
-				<g:Button ui:field="clearButton">Очистить</g:Button>
+				<g:ToggleButton text="Фильтр" height="27px" ui:field="filterToggleButton"/>
 			</g:HorizontalPanel>
-			<g:ListBox visibleItemCount="15" width="627px" height="332px" ui:field="contactList"/>
+			<g:ListBox visibleItemCount="15" width="508px" height="332px" ui:field="contactList"/>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

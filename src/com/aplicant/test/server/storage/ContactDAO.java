@@ -34,7 +34,13 @@ public class ContactDAO {
 	}
 	
 	public ArrayList<Contact> getContacts(String nameFilter){
-		ArrayList<Contact> result = new ArrayList<Contact>(data.values());
+		ArrayList<Contact> result = new ArrayList<Contact>();
+		
+		for (Contact contact : data.values()) {
+			if(contact.name.toLowerCase().startsWith(nameFilter.toLowerCase())){
+				result.add(contact);
+			}
+		}
 		return result;
 	}
 	
