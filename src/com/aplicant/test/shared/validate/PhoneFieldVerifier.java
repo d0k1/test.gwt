@@ -7,7 +7,11 @@ public class PhoneFieldVerifier {
 			return false;
 		}
 		
-		
-		return true;
+		boolean retval = false;
+	    String phoneNumberPattern = "(\\d-)?(\\d{3}-)?\\d{3}-\\d{4}";
+
+	    retval = phone.matches(phoneNumberPattern);
+
+	    return retval;		
 	}
 }
