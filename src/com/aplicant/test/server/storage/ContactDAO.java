@@ -1,25 +1,27 @@
 package com.aplicant.test.server.storage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 import com.aplicant.test.shared.model.Contact;
 
 public class ContactDAO {
-	private ArrayList<Contact> data = new ArrayList<Contact>(); 
+	private HashMap<String, Contact> data = new HashMap<String, Contact>();
+//	private ArrayList<Contact> data = new ArrayList<Contact>(); 
 	
 	private static ContactDAO instance = null;
 	
 	private ContactDAO(){
 		Contact c = null;
 
-		c = new Contact("User1", "+79223421334");
+		c = new Contact("First User", "+79223421334");
 		addContact(c);
 		
-		c = new Contact("User2", "+79223421331");
+		c = new Contact("Second User", "+79223421331");
 		addContact(c);
 
-		c = new Contact("User3", "+79223421322");
+		c = new Contact("Third User", "+79223421322");
 		addContact(c);
 	}
 	
@@ -32,19 +34,24 @@ public class ContactDAO {
 	}
 	
 	public ArrayList<Contact> getContacts(String nameFilter){
-		return data;
+		ArrayList<Contact> result = new ArrayList<Contact>(data.values());
+		return result;
 	}
 	
 	public void addContact(Contact contact){
 		contact.id = UUID.randomUUID().toString();
-		data.add(contact);
+		data.put(contact.id, contact);
 	}
 	
-	public void updateContact(Contact contact){
-	
+	public Contact getContactById(String id) {
+		return data.get(id);
 	}
 	
-	public void deleteContact(Contact contact){
-		
+	public void updateContact(Contact contact) {
+		data.put(contact.id, contact);
+	}
+	
+	public void deleteContact(String id) {
+		data.remove(id);
 	}
 }

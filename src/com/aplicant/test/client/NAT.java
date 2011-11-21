@@ -23,7 +23,7 @@ import com.google.web.bindery.event.shared.EventBus;
  */
 public class NAT implements EntryPoint {
 	private SimplePanel appWidget = new SimplePanel();
-	private Welcome defaultPlace = new Welcome("Greetings");
+	private Welcome defaultPlace = new Welcome();
 	
 	public void onModuleLoad() {
         ClientFactory clientFactory = GWT.create(ClientFactory.class);

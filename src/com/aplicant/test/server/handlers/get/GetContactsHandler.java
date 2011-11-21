@@ -15,7 +15,7 @@ public class GetContactsHandler implements ActionHandler<GetContactsAction, GetC
 			ExecutionContext arg1) throws DispatchException {
 		
 		GetContactsResult result = new GetContactsResult();
-		result.setContacts(ContactDAO.getInstance().getContacts(""));
+		result.setContacts(ContactDAO.getInstance().getContacts(arg0.getFilter()));
 		return result;
 	}
 

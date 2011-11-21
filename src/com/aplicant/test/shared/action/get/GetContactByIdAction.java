@@ -1,15 +1,18 @@
-package com.aplicant.test.shared.action.delete;
+package com.aplicant.test.shared.action.get;
 
 import net.customware.gwt.dispatch.shared.Action;
 
-import com.aplicant.test.shared.action.get.GetContactsResult;
+public class GetContactByIdAction implements Action<GetContactByIdResult> {
 
-public class DeleteContactAction  implements Action<DeleteContactResult>{
 	private String contactId;
 
-	public DeleteContactAction(){
+	public GetContactByIdAction(){
 	}
 
+	public GetContactByIdAction(String id){
+		this.contactId = id;
+	}
+	
 	public String getContactId() {
 		return contactId;
 	}
@@ -17,4 +20,5 @@ public class DeleteContactAction  implements Action<DeleteContactResult>{
 	public void setContactId(String contactId) {
 		this.contactId = contactId;
 	}
+	
 }

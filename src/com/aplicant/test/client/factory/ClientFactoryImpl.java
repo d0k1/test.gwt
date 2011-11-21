@@ -4,6 +4,8 @@ import net.customware.gwt.dispatch.client.DefaultExceptionHandler;
 import net.customware.gwt.dispatch.client.DispatchAsync;
 import net.customware.gwt.dispatch.client.standard.StandardDispatchAsync;
 
+import com.aplicant.test.client.view.card.CardView;
+import com.aplicant.test.client.view.card.CardViewImpl;
 import com.aplicant.test.client.view.phonebook.PhonebookView;
 import com.aplicant.test.client.view.phonebook.PhonebookViewImpl;
 import com.aplicant.test.client.view.welcome.WelcomeView;
@@ -15,7 +17,9 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 public class ClientFactoryImpl implements ClientFactory {
 
 	private final WelcomeView welcomeView = new WelcomeViewImpl();
+	
 	private final PhonebookView phonebookView = new PhonebookViewImpl();
+	private final CardView cardView = new CardViewImpl();
 	
 	private final DispatchAsync dispatch = new StandardDispatchAsync(new DefaultExceptionHandler());
 	
@@ -45,6 +49,11 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public DispatchAsync getDispatch() {
 		return dispatch;
+	}
+
+	@Override
+	public CardView getCardView() {
+		return cardView;
 	}
 	
 }

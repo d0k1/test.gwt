@@ -1,5 +1,7 @@
 package com.aplicant.test.shared.action.update;
 
-public class UpdateContactResult {
+import net.customware.gwt.dispatch.shared.Result;
+
+public class UpdateContactResult  implements Result {
 
 }

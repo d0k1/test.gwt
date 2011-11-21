@@ -22,7 +22,6 @@ public class WelcomeActivity extends AbstractActivity implements WelcomePresente
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		WelcomeView view = clientFactory.getWelcomeView();
-		view.setWelcomeMessage(place.getGreetingsMessage());
 		view.setPresenter(this);
 		panel.setWidget(view.asWidget());
 	}

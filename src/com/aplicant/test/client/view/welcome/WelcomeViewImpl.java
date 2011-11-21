@@ -55,11 +55,6 @@ public class WelcomeViewImpl extends Composite implements WelcomeView {
 	}
 
 	@Override
-	public void setWelcomeMessage(String text) {
-		GreetingsLabel.setText(text);
-	}
-	
-	@Override
 	public Widget asWidget(){
 		return this;
 	}
