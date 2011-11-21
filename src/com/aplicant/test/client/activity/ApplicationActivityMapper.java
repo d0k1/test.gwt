@@ -24,7 +24,7 @@ public class ApplicationActivityMapper implements ActivityMapper {
     @Override
     public Activity getActivity(Place place) {
         if (place instanceof Welcome)
-            return new WelcomeActivity((Welcome) place, clientFactory);
+            return new WelcomeActivity(clientFactory);
         else if (place instanceof Phonebook)
         	return new PhonebookActivity((Phonebook) place, clientFactory);
         else if (place instanceof Create)

@@ -3,26 +3,25 @@
  */
 package com.aplicant.test.client.view.welcome;
 
-import com.aplicant.test.client.presenter.welcome.WelcomePresenter;
+import com.aplicant.test.client.event.welcome.GotoBookEvent;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.EventBus;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 /**
  * @author dOkI
  *
  */
 public class WelcomeViewImpl extends Composite implements WelcomeView {
-	
-	private WelcomePresenter presenter;
-	
+	private EventBus eventBus;
 	private static WelcomeViewImplUiBinder uiBinder = GWT
 			.create(WelcomeViewImplUiBinder.class);
 
@@ -47,21 +46,23 @@ public class WelcomeViewImpl extends Composite implements WelcomeView {
 	@UiField Button button;
 	@UiField InlineLabel GreetingsLabel;
 
-	@UiHandler("button")
-	void onClick(ClickEvent e) {
-		//Window.alert("goto phonebook");
-		
-		presenter.gotoPhonebook();
-	}
-
 	@Override
 	public Widget asWidget(){
 		return this;
 	}
 
 	@Override
-	public void setPresenter(Object presenter) {
-		this.presenter = (WelcomePresenter) presenter;
+	public HasClickHandlers getGotoBookButton() {
+		return button;
 	}
 
+	@Override
+	public void setEventBus(EventBus bus) {
+		this.eventBus = bus; 
+	}
+
+	@UiHandler("button")
+	void onButtonClick(ClickEvent event) {
+		eventBus.fireEvent(new GotoBookEvent());
+	}
 }

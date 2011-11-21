@@ -13,7 +13,8 @@
 				<g:Button ui:field="viewButtom">Просмотр</g:Button>
 				<g:Button ui:field="deleteButtom">Удалить</g:Button>
 				<g:TextBox ui:field="filterInput"/>
-				<g:ToggleButton text="Фильтр" height="27px" ui:field="filterToggleButton"/>
+				<g:Button ui:field="filterButton">Фильтр</g:Button>
+				<g:Button ui:field="unfilterButton">Очистить</g:Button>
 			</g:HorizontalPanel>
 			<g:ListBox visibleItemCount="15" width="508px" height="332px" ui:field="contactList"/>
 		</g:VerticalPanel>

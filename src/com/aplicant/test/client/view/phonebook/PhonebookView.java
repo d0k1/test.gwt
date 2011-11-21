@@ -1,14 +1,22 @@
 package com.aplicant.test.client.view.phonebook;
 
+import java.util.ArrayList;
+
 import com.aplicant.test.client.view.CommonView;
-import com.google.gwt.user.client.ui.IsWidget;
+import com.aplicant.test.shared.model.Contact;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.ToggleButton;
 
-public interface PhonebookView extends CommonView {
+public interface PhonebookView extends CommonView {	
+	void setData(ArrayList<Contact> data);
 	ListBox getContactListBox();
-	boolean getFilterState();
-	void setFilterState(boolean value);
+	
 	TextBox getFilterInput();
+	
+	HasClickHandlers getAddButton();
+	HasClickHandlers getDetailsButton();
+	HasClickHandlers getDeleteButton();
+	HasClickHandlers getFilterButton();
+	HasClickHandlers getUnfilterButton();
 }

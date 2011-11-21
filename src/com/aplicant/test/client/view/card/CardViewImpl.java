@@ -1,6 +1,10 @@
 package com.aplicant.test.client.view.card;
 
-import com.aplicant.test.client.presenter.card.CardPresenter;
+import com.aplicant.test.client.event.card.delete.DeleteContactEvent;
+import com.aplicant.test.client.event.card.discard.DiscardContactEvent;
+import com.aplicant.test.client.event.card.save.SaveContactEvent;
+import com.aplicant.test.client.event.card.validate.name.ContactValidateNameEvent;
+import com.aplicant.test.client.event.card.validate.phone.ContactValidatePhoneEvent;
 import com.aplicant.test.shared.model.Contact;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.BlurEvent;
@@ -13,10 +17,10 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.EventBus;
 
 public class CardViewImpl extends Composite implements CardView {
 
-	private CardPresenter presenter;
 	private String contactId = null;
 	private static CardViewImplUiBinder uiBinder = GWT
 			.create(CardViewImplUiBinder.class);
@@ -27,17 +31,13 @@ public class CardViewImpl extends Composite implements CardView {
 	@UiField Button deleteButton;
 	@UiField Label nameLabel;
 	@UiField Label phoneLabel;
+	private EventBus eventBus;
 
 	interface CardViewImplUiBinder extends UiBinder<Widget, CardViewImpl> {
 	}
 
 	public CardViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
-	}
-
-	@Override
-	public void setPresenter(Object presenter) {
-		this.presenter = (CardPresenter) presenter;
 	}
 
 	@Override
@@ -61,34 +61,48 @@ public class CardViewImpl extends Composite implements CardView {
 
 	@UiHandler("saveButton")
 	void onSaveButtonClick(ClickEvent event) {
-		presenter.save();
+		eventBus.fireEvent(new SaveContactEvent(getContact()));
 	}
 	
 	@UiHandler("deleteButton")
 	void onDeleteButtonClick(ClickEvent event) {
-		presenter.delete();
+		eventBus.fireEvent(new DeleteContactEvent(getContact()));
 	}
 	
 	@UiHandler("cancelButton")
 	void onCancelButtonClick(ClickEvent event) {
-		presenter.discard();
+		eventBus.fireEvent(new DiscardContactEvent());
+	}
+
+	public void nameValidationOk(){
+		nameLabel.setStyleName("gwt-Label");
+	}
+	
+	public void nameValidationError(){
+		nameLabel.setStyleName("gwt-field-verification-error");
+	}
+	
+	public void phoneValidationOk(){
+		phoneLabel.setStyleName("gwt-Label");
+	}
+	
+	public void phoneValidationError(){
+		phoneLabel.setStyleName("gwt-field-verification-error");
 	}
 	
 	@UiHandler("nameField")
 	void onNameFieldBlur(BlurEvent event) {
-		if(!presenter.validateName(nameField.getText())){
-			nameLabel.setStyleName(".gwt-Label");
-		} else {
-			nameLabel.setStyleName(".gwt-Label");
-		}
+		eventBus.fireEvent(new ContactValidateNameEvent(nameField.getText()));
 	}
 	
 	@UiHandler("phoneField")
 	void onPhoneFieldBlur(BlurEvent event) {
-		if(!presenter.validatePhone(phoneField.getText())){
-			phoneLabel.setStyleName(".gwt-Label");
-		} else {
-			phoneLabel.setStyleName(".gwt-Label");
-		}
+		eventBus.fireEvent(new ContactValidatePhoneEvent(phoneField.getText()));
 	}
+
+	@Override
+	public void setEventBus(EventBus bus) {
+		this.eventBus = bus; 
+	}
+
 }
