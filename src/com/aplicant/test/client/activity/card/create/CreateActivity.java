@@ -29,7 +29,7 @@ public class CreateActivity extends CommonCardActivity {
 	}
 	
 	@Override
-	public void save(Contact contact) {
+	protected void save(Contact contact) {
 		getDispatch().execute(new CreateContactAction(contact), new AsyncCallback<CreateContactResult>() {
 
 			@Override
@@ -45,7 +45,7 @@ public class CreateActivity extends CommonCardActivity {
 	}
 
 	@Override
-	public void delete(Contact contact) {
+	protected void delete(Contact contact) {
 		goBack();
 	}
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.aplicant.test.client.view.CommonView;
 import com.aplicant.test.shared.model.Contact;
-import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 
@@ -14,9 +13,9 @@ public interface PhonebookView extends CommonView {
 	
 	TextBox getFilterInput();
 	
-	HasClickHandlers getAddButton();
-	HasClickHandlers getDetailsButton();
-	HasClickHandlers getDeleteButton();
-	HasClickHandlers getFilterButton();
-	HasClickHandlers getUnfilterButton();
+//	HasClickHandlers getAddButton();
+//	HasClickHandlers getDetailsButton();
+//	HasClickHandlers getDeleteButton();
+//	HasClickHandlers getFilterButton();
+//	HasClickHandlers getUnfilterButton();
 }

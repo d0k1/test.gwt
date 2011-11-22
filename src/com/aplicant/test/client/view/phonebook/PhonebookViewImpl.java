@@ -9,9 +9,11 @@ import com.aplicant.test.client.event.phonebook.unfilter.UnfilterContactsEvent;
 import com.aplicant.test.client.event.phonebook.update.UpdateContactEvent;
 import com.aplicant.test.shared.model.Contact;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.DoubleClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
@@ -19,9 +21,6 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
-import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.DoubleClickEvent;
 
 public class PhonebookViewImpl extends Composite implements PhonebookView {
 	private ArrayList<Contact> currentContacts = new ArrayList<Contact>();
@@ -65,30 +64,30 @@ public class PhonebookViewImpl extends Composite implements PhonebookView {
 		return filterInput;
 	}
 
-	@Override
-	public HasClickHandlers getAddButton() {
-		return addButton;
-	}
-
-	@Override
-	public HasClickHandlers getDetailsButton() {
-		return viewButtom;
-	}
-
-	@Override
-	public HasClickHandlers getDeleteButton() {
-		return deleteButtom;
-	}
-
-	@Override
-	public HasClickHandlers getFilterButton() {
-		return filterButton;
-	}
-
-	@Override
-	public HasClickHandlers getUnfilterButton() {
-		return unfilterButton;
-	}
+//	@Override
+//	public HasClickHandlers getAddButton() {
+//		return addButton;
+//	}
+//
+//	@Override
+//	public HasClickHandlers getDetailsButton() {
+//		return viewButtom;
+//	}
+//
+//	@Override
+//	public HasClickHandlers getDeleteButton() {
+//		return deleteButtom;
+//	}
+//
+//	@Override
+//	public HasClickHandlers getFilterButton() {
+//		return filterButton;
+//	}
+//
+//	@Override
+//	public HasClickHandlers getUnfilterButton() {
+//		return unfilterButton;
+//	}
 
 	@Override
 	public void setEventBus(EventBus bus) {

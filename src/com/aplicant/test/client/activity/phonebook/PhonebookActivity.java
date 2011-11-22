@@ -99,7 +99,7 @@ public class PhonebookActivity extends CommonActivity {
 	}
 
 	@Override
-	public void bindEvents() {
+	protected void bindEvents() {
 		storeEventHandler(clientFactory.getEventBus().addHandler(CreateContactEvent.TYPE, new com.aplicant.test.client.event.phonebook.create.CreateContactHandler() {
 			
 			@Override

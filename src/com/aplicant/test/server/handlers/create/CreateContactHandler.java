@@ -7,8 +7,6 @@ import net.customware.gwt.dispatch.shared.DispatchException;
 import com.aplicant.test.server.storage.ContactDAO;
 import com.aplicant.test.shared.action.create.CreateContactAction;
 import com.aplicant.test.shared.action.create.CreateContactResult;
-import com.aplicant.test.shared.action.get.GetContactsAction;
-import com.aplicant.test.shared.action.get.GetContactsResult;
 
 public class CreateContactHandler implements ActionHandler<CreateContactAction, CreateContactResult>{
 

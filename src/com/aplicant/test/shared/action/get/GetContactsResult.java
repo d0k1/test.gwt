@@ -1,13 +1,10 @@
 package com.aplicant.test.shared.action.get;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
-
-import com.aplicant.test.shared.model.Contact;
-import com.google.gwt.user.client.rpc.IsSerializable;
 
 import net.customware.gwt.dispatch.shared.Result;
+
+import com.aplicant.test.shared.model.Contact;
 
 public class GetContactsResult implements Result {
 	

@@ -12,7 +12,6 @@ import com.aplicant.test.client.view.welcome.WelcomeView;
 import com.aplicant.test.client.view.welcome.WelcomeViewImpl;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
-import com.google.web.bindery.event.shared.ResettableEventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 
 public class ClientFactoryImpl implements ClientFactory {

@@ -30,7 +30,7 @@ public class WelcomeActivity extends CommonActivity {
 	}
 
 	@Override
-	public void bindEvents() {
+	protected void bindEvents() {
 		storeEventHandler(clientFactory.getEventBus().addHandler(GotoBookEvent.TYPE, new GotoBookHandler() {
 			
 			@Override

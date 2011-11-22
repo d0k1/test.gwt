@@ -5,8 +5,6 @@ import net.customware.gwt.dispatch.server.ExecutionContext;
 import net.customware.gwt.dispatch.shared.DispatchException;
 
 import com.aplicant.test.server.storage.ContactDAO;
-import com.aplicant.test.shared.action.create.CreateContactAction;
-import com.aplicant.test.shared.action.create.CreateContactResult;
 import com.aplicant.test.shared.action.update.UpdateContactAction;
 import com.aplicant.test.shared.action.update.UpdateContactResult;
 

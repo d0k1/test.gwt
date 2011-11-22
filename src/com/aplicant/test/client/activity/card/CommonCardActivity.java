@@ -54,14 +54,14 @@ public abstract class CommonCardActivity extends CommonActivity {
 		clientFactory.getPlaceController().goTo(new Phonebook(""));
 	}
 
-	public abstract void save(Contact c);
-	public abstract void delete(Contact c);
+	protected abstract void save(Contact c);
+	protected abstract void delete(Contact c);
 	
-	public final boolean validateName(String value) {
+	protected final boolean validateName(String value) {
 		return NameFieldVerifier.isValidName(value);
 	}
 
-	public final boolean validatePhone(String value) {
+	protected final boolean validatePhone(String value) {
 		return PhoneFieldVerifier.isValidPhone(value);
 	}
 

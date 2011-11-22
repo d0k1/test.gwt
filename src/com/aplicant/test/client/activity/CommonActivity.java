@@ -9,7 +9,7 @@ public abstract class CommonActivity extends AbstractActivity {
 	
 	private ArrayList<HandlerRegistration> registrations = new ArrayList<HandlerRegistration>();
 	
-	public abstract void bindEvents();
+	protected abstract void bindEvents();
 	
 	protected final void unbindHandlers(){
 		for (HandlerRegistration item : registrations) {

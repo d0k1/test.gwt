@@ -48,7 +48,7 @@ public class DetailsActivity extends CommonCardActivity {
 	}
 	
 	@Override
-	public void save(Contact contact) {
+	protected void save(Contact contact) {
 		getDispatch().execute(new UpdateContactAction(contact), new AsyncCallback<UpdateContactResult>() {
 
 			@Override
@@ -64,7 +64,7 @@ public class DetailsActivity extends CommonCardActivity {
 	}
 	
 	@Override
-	public void delete(Contact contact) {
+	protected void delete(Contact contact) {
 		getDispatch().execute(new DeleteContactAction(contact.id), new AsyncCallback<DeleteContactResult>() {
 
 			@Override
